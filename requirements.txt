@@ -1,3 +1,4 @@
+# team please review if other requirements are needed per your workstreams
 python-dotenv #not sure if this is needed but keep for now
 pandas
 requests
@@ -5,3 +6,4 @@ plotly
 sendgrid==6.6.0
 
 Flask
+

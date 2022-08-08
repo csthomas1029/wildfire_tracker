@@ -21,4 +21,10 @@ Then, within an active virtual environment, install package dependencies (includ
 pip install -r requirements.txt
 ```
 
+From the command line, run the app. If installation worked, this should prompt a new browser to open and display a map of the wildfires.
+
+```sh
+python -m wildfire_map
+```
+
 ## Configuration
