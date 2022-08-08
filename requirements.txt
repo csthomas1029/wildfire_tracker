@@ -1,0 +1,6 @@
+python-dotenv #not sure if this is needed but keep for now
+pandas
+requests
+sendgrid==6.6.0
+
+Flask
