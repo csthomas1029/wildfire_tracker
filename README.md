@@ -11,7 +11,7 @@ cd desktop/GitHub/wildfire_tracker
 Use Anaconda to create and activate a new virtual environment, perhaps called "wildfire-env":
 
 ```sh
-conda create -n wilfire-env python=3.8
+conda create -n wildfire-env python=3.8
 conda activate wildfire-env
 ```
 
