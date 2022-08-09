@@ -46,3 +46,4 @@ FLASK_APP=web_app flask run
 
 ## Acknowledgements
 Templates Source: https://github.com/prof-rossetti/intro-to-python/blob/main/exercises/web-app/checkpoints/3-render-template.md
+Routes Source: https://github.com/prof-rossetti/intro-to-python/blob/main/exercises/web-app/checkpoints/2-routing.md
