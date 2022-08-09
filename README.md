@@ -11,7 +11,7 @@ cd desktop/GitHub/wildfire_tracker
 Use Anaconda to create and activate a new virtual environment, perhaps called "wildfire-env":
 
 ```sh
-conda create -n wilfire-env python=3.8
+conda create -n wildfire-env python=3.8
 conda activate wildfire-env
 ```
 
@@ -21,10 +21,25 @@ Then, within an active virtual environment, install package dependencies (includ
 pip install -r requirements.txt
 ```
 
+## Usage Locally
 From the command line, run the app. If installation worked, this should prompt a new browser to open and display a map of the wildfires.
 
 ```sh
 python -m wildfire_map
 ```
 
-## Configuration
+## Running the web app
+Use the following from the command line to run the web app.
+
+For windows users:
+
+```sh
+export FLASK_APP=web_app
+flask run
+```
+
+For MAC users:
+
+```sh
+FLASK_APP=web_app flask run
+```
