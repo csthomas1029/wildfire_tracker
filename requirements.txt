@@ -1,5 +1,5 @@
 # team please review if other requirements are needed per your workstreams
-python-dotenv #not sure if this is needed but keep for now
+python-dotenv
 pandas
 requests
 plotly
