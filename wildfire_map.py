@@ -1,6 +1,11 @@
+import os
+from dotenv import load_dotenv #https://github.com/prof-rossetti/intro-to-python/blob/b7bbb37445bab12ee0c655a9d34658d9266db0d8/notes/python/packages/dotenv.md
+load_dotenv()
+api_key=os.getenv("api_key", default="demo")
+
 import requests
 
-nasa_url = "https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?status=open"
+nasa_url = "https://eonet.gsfc.nasa.gov/api/v2.1/categories/8?status=open&api_key={api_key}"
 x = requests.get(nasa_url)
 
 import json
