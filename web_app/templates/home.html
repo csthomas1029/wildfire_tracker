@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My App</title>
-</head>
-<body>
+{% extends "layout.html" %}
 
-    <h1>WildFire Tracker</h1>
+{% block content %}
 
-    <p>Here you can see an update of the latest wildfires globally, based on NASA's satellite data</p>
+    <h1>Wildfire Tracker</h1>
 
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/hello">Hello</a></li>
-        </ul>
-    </nav>
+    <p>Here you can see an update of the latest wildfires globally, based on NASA's satellite data.</p>
 
-    <footer>
-        <p>(created by Anmol Ahuja, Ellie Tanji, Caroline Thomas, and Thomas Zedzian)</p>
-    </footer>
-
-</body>
-</html>
+{% endblock %}
