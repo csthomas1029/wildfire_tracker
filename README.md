@@ -43,6 +43,8 @@ From the command line, run the app. If installation worked, this should prompt a
 python -m wildfire_map
 ```
 
-## Heroku domain
-https://wildfire-map-final-project.herokuapp.com/
-
+## Heroku Scheduler
+Source: https://github.com/csthomas1029/daily-briefings/blob/main/DEPLOYING.md
+Follow these instructions to schedule the email to send automatically at a specified interval.
+The server configuration variables should follow the .env setup above.
+You will input the same python command as you use in the command line to run the app.
