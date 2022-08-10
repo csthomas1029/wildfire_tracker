@@ -54,7 +54,7 @@ df = pd.concat([df, split_df], axis=1)
 
 #sattelite map
 fig = px.scatter_mapbox(df, lat='latitude', lon='longitude', hover_name='title', hover_data= ['date'],
-                       color_discrete_sequence=["red"], zoom=1.5, height=300)
+                       color_discrete_sequence=["red"], zoom=0, height=300)
 fig.update_layout(mapbox_style="open-street-map")
 fig.update_layout(margin={"r":25,"t":25,"l":25,"b":25})
 fig.update_layout(
@@ -71,3 +71,50 @@ fig.update_layout(
         ]}])
 fig.show()
 
+#https://github.com/prof-rossetti/intro-to-python/blob/a48e76412a9c84de948698d1bf0d557551626570/exercises/codebase-cleanup/starter/app/unemployment_email.py
+# https://plotly.com/python/static-image-export/
+if not os.path.exists("images"):
+    os.mkdir("images")
+
+img_filepath = os.path.join(os.path.dirname(__file__), "images", "", "wildfire.png")
+fig.write_image(img_filepath)
+
+# with attachment: https://www.twilio.com/blog/sending-email-attachments-with-twilio-sendgrid-python
+
+import base64
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition, ContentId
+
+load_dotenv()
+
+# obtain api key at https://sendgrid.com/
+# and verify single sender with a given email address...
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+SENDER_ADDRESS = os.getenv("SENDER_ADDRESS")
+
+
+#prep email
+subject="Latest Wildfire Tracker"
+html="<p>This is your wildfire tracker! See attached image.</p>"
+
+client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html)
+
+# for binary files, like PDFs and images:
+with open(img_filepath, 'rb') as f:
+    data = f.read()
+    f.close()
+encoded_img = base64.b64encode(data).decode()
+
+# attach the file:
+message.attachment = Attachment(
+    file_content = FileContent(encoded_img),
+    file_type = FileType('image/png'),
+    file_name = FileName('wildfire.png'),
+    disposition = Disposition('attachment'),
+    content_id = ContentId('Attachment 1')
+)
+
+#send email
+response = client.send(message)
+print(response.status_code)

@@ -21,10 +21,28 @@ Then, within an active virtual environment, install package dependencies (includ
 pip install -r requirements.txt
 ```
 
-From the command line, run the app. If installation worked, this should prompt a new browser to open and display a map of the wildfires.
+## .env setup
+In a .env file, you should add environment variables for the following:
+
+```sh
+api_key = "input your NASA api key here"
+```
+
+```sh
+SENDGRID_API_KEY="input your sendgrid api key here"
+```
+
+```sh
+SENDER_ADDRESS="input your sendgrid email here:
+```
+
+## Usage
+From the command line, run the app. If installation worked, this should prompt a new browser to open and display a map of the wildfires. Sendgrid should also send an email with an image of the map attached.
 
 ```sh
 python -m wildfire_map
 ```
 
-## Configuration
+## Heroku domain
+https://wildfire-map-final-project.herokuapp.com/
+
