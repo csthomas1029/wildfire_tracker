@@ -94,8 +94,8 @@ SENDER_ADDRESS = os.getenv("SENDER_ADDRESS")
 
 
 #prep email
-subject="Latest Wildfire Tracker"
-html="<p>This is your wildfire tracker! See attached image.</p>"
+subject="Daily Wildfire Tracker"
+html="<p>Attached is a static image of the current wildfire map to reference for latest changes. Please visit the map locally on your work desktop for an interactive version.</p>"
 
 client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
 message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html)
