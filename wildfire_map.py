@@ -54,7 +54,7 @@ df = pd.concat([df, split_df], axis=1)
 
 #sattelite map
 fig = px.scatter_mapbox(df, lat='latitude', lon='longitude', hover_name='title', hover_data= ['date'],
-                       color_discrete_sequence=["red"], zoom=1.5, height=300)
+                       color_discrete_sequence=["red"], zoom=0, height=300)
 fig.update_layout(mapbox_style="open-street-map")
 fig.update_layout(margin={"r":25,"t":25,"l":25,"b":25})
 fig.update_layout(
