@@ -83,7 +83,7 @@ dict = df.to_dict(orient = 'records')
 wildfires_today = []
 count = 0
 for event in dict:
-   if event['date'] == date.today():
+   if event['date'] == "2022-08-05":
      count += 1
      wildfires_today.append(event)
 for event in wildfires_today:
@@ -123,7 +123,8 @@ html= """\
     </p>
   </body>
 </html>
-"""
+""" #source: https://stackoverflow.com/questions/41857610/use-a-variable-inside-html-email
+
 
 client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
 message = Mail(
