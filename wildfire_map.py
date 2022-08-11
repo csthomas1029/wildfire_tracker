@@ -89,7 +89,8 @@ for event in dict:
 #delete below if doesn't work
 wildfires_today_details = []
 for info in wildfires_today:
-  wildfires_today_details.append(info['title'] and ":" and info['coordinates']) 
+  wildfires_today_details.append(info['title'])
+  wildfires_today_details.append(info['coordinates']) 
 
 if not os.path.exists("images"):
     os.mkdir("images")
