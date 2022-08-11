@@ -73,6 +73,25 @@ fig.show()
 
 #https://github.com/prof-rossetti/intro-to-python/blob/a48e76412a9c84de948698d1bf0d557551626570/exercises/codebase-cleanup/starter/app/unemployment_email.py
 # https://plotly.com/python/static-image-export/
+
+##FOR NEW WILDFIRE COUNT USE BELOW CODE
+#from datetime import date
+
+#df[['date','time']] = df['date'].str.split('T', expand=True) #>https://datascienceparichay.com/article/pandas-split-column-by-delimiter/#:~:text=Split%20column%20by%20delimiter%20into,True%20to%20the%20expand%20parameter.
+#dict = df.to_dict(orient = 'records')
+
+#wildfires_today = []
+#count = 0
+#for event in dict:
+   #if event['date'] == date.today():
+     #count += 1
+     #wildfires_today.append(event)
+#print("Number of wildfires started today:", count)
+#print("-------------------")
+#for event in wildfires_today:
+  #print(event['title']+",", "Coordinates:", event['coordinates'])
+
+
 if not os.path.exists("images"):
     os.mkdir("images")
 
@@ -98,7 +117,13 @@ subject="Daily Wildfire Tracker"
 html="<p>Attached is a static image of the current wildfire map to reference for latest changes. Please visit the map locally on your work desktop for an interactive version.</p>"
 
 client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
-message = Mail(from_email=SENDER_ADDRESS, to_emails=SENDER_ADDRESS, subject=subject, html_content=html)
+message = Mail(
+    from_email=SENDER_ADDRESS,
+    to_emails=SENDER_ADDRESS,
+    subject=subject,
+    html_content=html
+    #content=print("Number of wildfires started today:", count)
+)
 
 # for binary files, like PDFs and images:
 with open(img_filepath, 'rb') as f:
