@@ -83,7 +83,7 @@ dict = df.to_dict(orient = 'records')
 wildfires_today = []
 count = 0
 for event in dict:
-   if event['date'] == date.today():
+   if event['date'] == "2022-08-05":
      count += 1
      wildfires_today.append(event)
 #delete below if doesn't work
