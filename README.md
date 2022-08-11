@@ -48,3 +48,15 @@ Source: https://github.com/csthomas1029/daily-briefings/blob/main/DEPLOYING.md
 Follow these instructions to schedule the email to send automatically at a specified interval.
 The server configuration variables should follow the .env setup above.
 You will input the same python command as you use in the command line to run the app.
+If any changes are made to source code, you will need to rerun the following command:
+
+```sh
+git push heroku main
+```
+
+Then once the build is successful, run the following command. Note - if you are a windows user your Git Bash may freeze. Just close out, enter the correct folder and environment and run this command then.
+```sh
+heroku run python -m wildfire_map
+```
+
+This should successfully send you a new email.
