@@ -75,22 +75,20 @@ fig.show()
 # https://plotly.com/python/static-image-export/
 
 ##FOR NEW WILDFIRE COUNT USE BELOW CODE
-#from datetime import date
+from datetime import date
 
-#df[['date','time']] = df['date'].str.split('T', expand=True) #>https://datascienceparichay.com/article/pandas-split-column-by-delimiter/#:~:text=Split%20column%20by%20delimiter%20into,True%20to%20the%20expand%20parameter.
-#dict = df.to_dict(orient = 'records')
+df[['date','time']] = df['date'].str.split('T', expand=True) #>https://datascienceparichay.com/article/pandas-split-column-by-delimiter/#:~:text=Split%20column%20by%20delimiter%20into,True%20to%20the%20expand%20parameter.
+dict = df.to_dict(orient = 'records')
 
-#wildfires_today = []
-#count = 0
-#for event in dict:
-   #if event['date'] == date.today():
-     #count += 1
-     #wildfires_today.append(event)
-#print("Number of wildfires started today:", count)
-#print("-------------------")
-#for event in wildfires_today:
-  #print(event['title']+",", "Coordinates:", event['coordinates'])
-
+wildfires_today = []
+count = 0
+for event in dict:
+   if event['date'] == date.today():
+     count += 1
+     wildfires_today.append(event)
+for event in wildfires_today:
+  wildfires_today_title = event['title']
+  wildfires_today_coordinates = event['coordinates']
 
 if not os.path.exists("images"):
     os.mkdir("images")
@@ -114,7 +112,18 @@ SENDER_ADDRESS = os.getenv("SENDER_ADDRESS")
 
 #prep email
 subject="Daily Wildfire Tracker"
-html="<p>Attached is a static image of the current wildfire map to reference for latest changes. Please visit the map locally on your work desktop for an interactive version.</p>"
+html= """\
+    <html>
+    <head></head>
+  <body>
+    <p>Attached is a static image of the current wildfire map to reference for latest changes.<br>
+       Please visit the map locally on your work desktop for an interactive version.<br>
+       Number of wildfires started today: """ +str(count)+ """ <br>
+       """ +str(wildfires_today_title)+ """ : """ +str(wildfires_today_coordinates)+ """
+    </p>
+  </body>
+</html>
+"""
 
 client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
 message = Mail(
@@ -122,7 +131,6 @@ message = Mail(
     to_emails=SENDER_ADDRESS,
     subject=subject,
     html_content=html
-    #content=print("Number of wildfires started today:", count)
 )
 
 # for binary files, like PDFs and images:
