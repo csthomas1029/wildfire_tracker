@@ -34,7 +34,7 @@ df = pd.DataFrame(rows)
 split_df = pd.DataFrame(df['coordinates'].tolist(), columns=['longitude', 'latitude'])  #https://datascienceparichay.com/article/split-pandas-column-of-lists-into-multiple-columns/
 
 df = pd.concat([df, split_df], axis=1)
-#df
+#alternative map option below
 # https://colab.research.google.com/drive/1oFYdpTah2IYDZqdYOfpWc0poEQW2SKJy?usp=sharing#scrollTo=ZMyUY7XihNta
 #fig = go.Figure(data=go.Scattergeo(
 #        lon = df['longitude'],
@@ -86,9 +86,10 @@ for event in dict:
    if event['date'] == date.today():
      count += 1
      wildfires_today.append(event)
-for event in wildfires_today:
-  wildfires_today_title = event['title']
-  wildfires_today_coordinates = event['coordinates']
+#delete below if doesn't work
+wildfires_today_details = []
+for info in wildfires_today:
+  wildfires_today_details.append(info['title'] and ":" and info['coordinates']) 
 
 if not os.path.exists("images"):
     os.mkdir("images")
@@ -119,7 +120,7 @@ html= """\
     <p>Attached is a static image of the current wildfire map to reference for latest changes.<br>
        Please visit the map locally on your work desktop for an interactive version.<br>
        Number of wildfires started today: """ +str(count)+ """ <br>
-       """ +str(wildfires_today)+ """
+       """ +str(wildfires_today_details)+ """
     </p>
   </body>
 </html>
