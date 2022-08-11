@@ -119,7 +119,7 @@ html= """\
     <p>Attached is a static image of the current wildfire map to reference for latest changes.<br>
        Please visit the map locally on your work desktop for an interactive version.<br>
        Number of wildfires started today: """ +str(count)+ """ <br>
-       """ +str(wildfires_today_title)+ """ : """ +str(wildfires_today_coordinates)+ """
+       """ +str(wildfires_today)+ """
     </p>
   </body>
 </html>
